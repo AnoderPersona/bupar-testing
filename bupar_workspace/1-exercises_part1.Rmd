@@ -1,0 +1,90 @@
+---
+title: "Exercises [Part 1]"
+output: 
+  html_document:
+    theme: flatly
+---
+
+```{r include = F}
+library(bupaR)
+library(bupaRtutorial)
+```
+
+In this exercise we will be looking at an event log containing recorded eating activities of a group of people. The eventlog has the name `eating_patterns` and can be seen below. Each case is a person and each activity instance is a meal.
+
+
+```{r}
+eating_patterns
+```
+
+Try to find the answer to the following questions. The first one has been solved for you as an example.
+
+
+1. How many different persons are there in the data?
+
+```{r}
+n_cases(eating_patterns)
+```
+
+2. How many different types of activities were recorded?
+
+```{r}
+# Your code goes here:
+
+```
+
+3. How many meals or preparation activities were recorded?
+
+```{r}
+
+
+```
+
+4. What is the time frame of the data? I.e. when was the data recorded? (Hint: try the `summary` function).
+
+```{r}
+
+
+
+```
+
+5. What is the most common activity? 
+
+```{r}
+
+
+
+
+```
+
+6. Does this event log contain resources? Please check.
+
+```{r}
+
+
+
+
+```
+
+7. The "processing time" is a the time a person spends on a certain activity. This can be computed as follows for activities.
+
+The `processing_time` function is called a metric, of which we will see more examples later. Have a look at the code below, and it's output. Can you see which of the activities (on average) took the most time?
+
+```{r}
+processing_time(eating_patterns, level = "activity", units = "hours")
+```
+
+8. We would like to know the processing time for each case: in other words, which of the persons spends the most time preparing and eating his meals? And which the least?
+
+Copy the code above, and change the level argument to "case". Can you find the answer to the question?
+
+```{r}
+
+
+
+```
+
+
+
+
+

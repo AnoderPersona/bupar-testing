@@ -1,0 +1,123 @@
+---
+title: "Exercises [Part 2]"
+output: 
+  html_document:
+    theme: flatly
+---
+
+```{r include = F}
+library(bupaR)
+library(bupaRtutorial)
+```
+
+For each of the following event logs, find an answer to the questions.
+
+## Sepsis
+
+1. In the slides we saw several dotted charts about the sepsis event log. Can you reconstruct the dotted chart where we can compare the different days in the week. Set the x and sort argument appropriately, and show the time units in "days". (Color scales can be different)
+
+```{r}
+
+
+
+```
+
+
+## Order to cash
+
+This data shows the process from sales order until payment received.
+
+```{r}
+order_to_cash
+```
+
+
+2. What is the most common trace/variant in the `order_to_cash` data? Can you visualize the traces we need to cover 20% of the data?
+
+```{r}
+
+
+
+```
+
+3. Another way to look at the variants is to create a process map. Let's draw the default process map for the order to cash process.
+
+```{r}
+
+
+
+```
+
+4. We can zoom in on a part of this process by using the trim filter. For example, let's look at activities from the start of the case until the activity "Receive Sales Order". The following filter does this. You can have a closer look at it, but we'll see more about filters later. The subset of the event log is saved as "pre_sales". 
+
+```{r}
+order_to_cash %>%
+    filter_trim(end_activities = "Receive Sales Order") -> pre_sales
+```
+
+5. How many traces are there in pre_sales?
+
+```{r}
+
+
+```
+
+6. Visualize the most common ones until 80% of the cases is covered using the trace_explorer. What is the most remarkable thing you see?
+
+```{r}
+
+
+```
+
+
+7. Redraw the process_map for this smaller event log. Try to find what is the most common activity after "Validate"?
+
+```{r}
+
+
+
+```
+
+8.  In what percentage of cases is the activity "Inform on Pending Quotations" executed? Try to find the answer by changing the argument of the frequency function.
+
+```{r}
+
+
+```
+
+9. How many days does the preparation of the quotation (Prepare Quotation) takes on average? Change the type of the process map to performance() to see this, and set the arguments correctly.
+
+```{r}
+
+
+```
+
+## Patients
+
+10. The processanimateR package allows you to animate the process map with the function "animate_process". It only needs the eventlog as argument. Let's try with the patients data. 
+
+```{r}
+library(processanimateR)
+
+
+
+
+```
+
+## Human resources
+
+```{r}
+human_resources
+```
+
+
+11. The human_resources dataset contains information about a recruitement process. Try to draw a process map of the data with the following characteristics:
+
+*   The edges show the median time between activities in number of days.
+*   The nodes show the relative number of cases in which the activity was executed.
+
+```{r}
+
+
+```
+
